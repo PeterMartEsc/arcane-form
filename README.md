@@ -66,7 +66,9 @@ Inicialmente, creé el proyecto con:
 ```
 siguiendo la esta configuración:
 
-<img src="./resources/crear-proyecto.png" alt="captura creación" />
+<div justify=center>
+    <img src="./resources/crear-proyecto.png" alt="captura creación" />
+<div>
 
 Como se especifica en las instrucciones, podíamos elegir entre la __Composition API__ u __Option API__. Yo elegí la __Option API__ debido a varios factores. Según nos explicó la profesora, es la mejor opción para aplicaciones pequeñas, ya que su escalabilidad es limitada, y también es ideal para nuevos desarrolladores en Vue. 
 
@@ -74,12 +76,15 @@ Aparte de lo mencionado, la __Option API__ también se caracteriza por tener una
 
 Luego de elegir la estructura del proyecto, procedí a crear el formulario. Primero realicé uno con un diseño más simple para hacerme una idea
 
-<img src="./resources/form-simple.png" alt="formulario inicial" />
+<div justify=center>
+    <img src="./resources/form-simple.png" alt="formulario inicial" />
+</div>
 
 pero al poco tiempo, decidí aplicarle __Bootstrap__ para tener un diseño más bonito. Además, decidí cambiar el input de `origen` por un selector, y eliminé el otro checkbox que había (estaba establecido un check para si la misión estaba completata y otro para si no, pero no tenía sentido. Si se marcaba el de si, estaba completada y si no, no lo estaba)
 
-<img src="./resources/form-2.png" alt="formulario inicial" />
-
+<div justify=center>
+    <img src="./resources/form-2.png" alt="formulario inicial" />
+</div>
 Luego me puse con el código. Tuve varias complicaciones, ya que hacía tiempo que no trabajaba en JavaScript puro, pero como no iba a crear el proyecto de nuevo desde 0 para hacerlo con Typescript, decidí seguirlo en Javascript. 
 
 El primer problema fue al intentar tomar los datos del formulario. Era una acción que nunca había realizaco con Vue y menos con la __Option API__, entonces acabé recurriendo a `document.getElementById()`
@@ -122,7 +127,9 @@ saveData() {
 
 Más adelante, me di cuenta (gracias a preguntar ciertas dudas) que sería más sencillo, y que se implementaría mejor con __Vue__, utilizar el `v-model` en el formulario para relacionar los datos. Cada elemento en el formulario, está relacionado con una variable en específico. Cuando se escribe en los campos, se les da valor a estas variables, y en el submit se comprueban que estén todas rellenas, luego crea un objeto Personaje con los valores nuevos, le hace un push al array, vacía los campos (excepto el de origen, que por defecto es `Runaterra` y el de misiónSi que es false)
 
-<img src="./resources/saveData-nuevo.png" alt="saveData actualizado" />
+<div justify=center>
+    <img src="./resources/saveData-nuevo.png" alt="saveData actualizado" />
+</div>
 
 Durante finalizando la tarea, quise añadir ciertos detalles al estilo. Añadí un fondo a la página, para darle más color y un diseño diferente. Sin embargo, no lograba que se acoplara correctamente a la página, siempre quedaba cubierta la parte central del fondo (obviamente debido a que tenía un formulario en el centro de la página).
 
@@ -130,12 +137,14 @@ Probé a añadir un botón para cambiar el color del formulario de fomra que que
 
 Finalmente, en un momento de lucidez, decidí meterle `0.7` de transparencia al color del formulario, y resultó ser la mejor opción.
 
-<img src="./resources/form-transparente.png" alt="formulario transparente final" />
+<div justify=center>
+    <img src="./resources/form-transparente.png" alt="formulario transparente final" />
+</div>
 
 También tuve algún que otro problema de formato con el fondo. Tenerlo centrado, que no se ampliara cuando se añade contenido a la tabla, que no se muestren zonas blancas. Todo eso lo solucioné dandole unas propiedades al estilo (están comentadas al final del componente).
 
-<img src="./resources/estilo-fondo.png" alt="style del fondo" />
-
-
+<div justify=center>
+    <img src="./resources/estilo-fondo.png" alt="style del fondo" />
+</div>
 
 </div>

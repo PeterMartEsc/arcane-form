@@ -6,11 +6,11 @@
                     <div class="row">
                         <div class="form-group col-6">
                             <label for="nombre" class="mb-2">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" placeholder="Shaco">
+                            <input type="text" class="form-control" id="nombre" placeholder="Shaco" v-model="nombre">
                         </div>
                         <div class="col-6">
                             <label for="origen" class="mb-2">Origen</label>
-                            <select class="form-select" id="origen">
+                            <select class="form-select" id="origen" v-model="origen">
                                 <option selected>Runaterra</option>
                                 <option value="Piltover">Piltover</option>
                                 <option value="Zaun">Zaun</option>
@@ -31,16 +31,16 @@
                     <br>
                     <div class="form-group">
                         <label for="habilidad" class="mb-2">Habilidad Especial</label>
-                        <input type="text" class="form-control" id="habilidad" placeholder="Cuerpo a cuerpo">
+                        <input type="text" class="form-control" id="habilidad" placeholder="Cuerpo a cuerpo" v-model="habilidad">
                     </div>
                     <br>
                     <div class="form-group">
                         <label for="listaAliados" class="mb-2">Lista de Aliados</label>
-                        <textarea class="form-control" id="listaAliados" rows="3" placeholder="Su clon :(" style="resize: none;"></textarea>
+                        <textarea class="form-control" id="listaAliados" rows="3" v-model="listaAliados" placeholder="Su clon :(" style="resize: none;"></textarea>
                     </div>
                     <br>
                     <div class="misionSiNo">
-                        <input class="form-check-input" type="checkbox" id="misionSi" value=true>
+                        <input class="form-check-input" type="checkbox" id="misionSi" v-model="misionSi" value=true>
                         <label class="form-check-label mx-2" for="misionSi">Misión Completada</label>
                     </div>
                     <br>
@@ -96,13 +96,18 @@
 
         data(){
 
-            let personajeEjemplo = new Personaje("nombre", "origen", "habilidad", "aliados", "mision-si");
+            //let personajeEjemplo = new Personaje("nombre", "origen", "habilidad", "aliados", "mision-si");
             let arrayPersonajes = [
             
             ];
 
             return {
-                personajeEjemplo,
+                nombre: '',
+                origen: 'Runaterra',
+                habilidad: '',
+                listaAliados: '',
+                misionSi: false,
+                //personajeEjemplo,
                 arrayPersonajes,
             }
         },
@@ -110,51 +115,28 @@
         methods: {
             saveData() {
                 
-                let nombreGuardar = document.getElementById("nombre").value;
-                let origenGuardar = document.getElementById("origen").value;
-                let habilidadGuardar = document.getElementById("habilidad").value;
-                let listaAliadosGuardar = document.getElementById("listaAliados").value;
-                let misionSi = document.getElementById("misionSi").checked ? "Sí" : "No";
-
-                if(nombreGuardar === "" || origenGuardar === "" || habilidadGuardar === "" || listaAliadosGuardar === ""){
+                if (this.nombre === "" || this.origen === "" || this.habilidad === "" || this.listaAliados === "") {
                     alert("Rellene todos los campos para guardar");
                     return;
                 }
 
                 let personajeNuevo = new Personaje(
-                    nombreGuardar,
-                    origenGuardar,
-                    habilidadGuardar,
-                    listaAliadosGuardar,
-                    misionSi,
+                    this.nombre,
+                    this.origen,
+                    this.habilidad,
+                    this.listaAliados,
+                    this.misionSi ? "Sí" : "No"
                 );
 
                 // Agregar el personaje al array
                 this.arrayPersonajes.push(personajeNuevo);
 
                 // Vaciar el formulario
-                document.getElementById("nombre").value = "";
-                document.getElementById("origen").value = "";
-                document.getElementById("habilidad").value = "";
-                document.getElementById("listaAliados").value = "";
-                document.getElementById("misionSi").checked = false;
-
-                //console.log("Personaje agregado:", nuevoPersonaje);
-            },
-
-            transparentar() {
-                //alert("hey");
-                let toggler = document.getElementById("transparente");
-
-                if (toggler.checked) {
-                    
-                    //alert("hey");
-                    //console.log("El switch está activado");
-                    // Añade aquí la acción que quieras realizar al activarlo
-                } else {
-                    console.log("El switch está desactivado");
-                    // Añade aquí la acción que quieras realizar al desactivarlo
-                }
+                this.nombre = '';
+                this.origen = 'Runaterra';
+                this.habilidad = '';
+                this.listaAliados = '';
+                this.misionSi = false;
             }
 
         },
@@ -178,12 +160,11 @@
     }
 
     .fondo{
-        background-image: url(../assets/fondo-3.jpg);
-        background-position:  center; /*-300px*/
+        background-image: url(../assets/fondo-3.jpg); /* Fondo */
+        background-position:  center; 
         background-size: cover; /* Escalar la imagen para cubrir toda la pantalla */
-        background-attachment: fixed;
-        background-repeat: repeat;
-        min-height: 100vh /* Asegura que el fondo cubra toda la altura del viewport */
+        background-attachment: fixed; /* Obliga al fondo a mantenerse quieto, ni ampliarse ni moverse */
+        min-height: 100vh /* Asegura que el fondo cubra toda la altura que se vizualiza */
     }
 
 </style>

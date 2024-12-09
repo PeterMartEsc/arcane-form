@@ -1,13 +1,6 @@
 <template>
     <main class="fondo">
         <div class="container p-4">
-            
-            <!-- Bootstrap 5 switch
-            <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="transparente" @change="transparentar">
-                    <label class="form-check-label text-white" for="transparente">Transparentar</label>
-            </div>-->
-
             <div class="formulario p-3 m-auto powderBlue">
                 <form @submit.prevent="saveData">
                     <div class="row">
@@ -105,12 +98,7 @@
 
             let personajeEjemplo = new Personaje("nombre", "origen", "habilidad", "aliados", "mision-si");
             let arrayPersonajes = [
-                new Personaje("nombre", "origen", "habilidad", "aliados", "mision-si"), 
-                new Personaje("nombre", "origen", "habilidad", "aliados", "mision-si"),
-                new Personaje("nombre", "origen", "habilidad", "aliados", "mision-si"),
-                new Personaje("nombre", "origen", "habilidad", "aliados", "mision-si"),
-                new Personaje("nombre", "origen", "habilidad", "aliados", "mision-si")
-
+            
             ];
 
             return {
@@ -193,7 +181,9 @@
         background-image: url(../assets/fondo-3.jpg);
         background-position:  center; /*-300px*/
         background-size: cover; /* Escalar la imagen para cubrir toda la pantalla */
-        /*height: 100vh; /* Asegura que el fondo cubra toda la altura del viewport */
+        background-attachment: fixed;
+        background-repeat: repeat;
+        min-height: 100vh /* Asegura que el fondo cubra toda la altura del viewport */
     }
 
 </style>
